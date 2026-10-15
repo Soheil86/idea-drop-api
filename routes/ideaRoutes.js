@@ -1,4 +1,5 @@
 import express from 'express'
+import mongoose from 'mongoose'
 import Idea from '../models/ideas.js'
 const router = express.Router()
 
@@ -8,7 +9,13 @@ const router = express.Router()
 // @query           _limit (optional limit for ideas returned)
 router.get('/', async (req, res, next) => {
 	try {
-		const ideas = await Idea.find()
+		const limit = parseInt(req.query._limit)
+		const query = Idea.find().sort({ createdAt: -1 })
+
+		if (!isNaN(limit)) {
+			query.limit(limit)
+		}
+		const ideas = await query.exec()
 		res.json(ideas)
 	} catch (error) {
 		console.log(error)
