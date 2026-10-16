@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import Idea from '../models/ideas.js'
+import Idea from '../models/Ideas.js'
 const router = express.Router()
 
 // @route           GET /api/ideas
