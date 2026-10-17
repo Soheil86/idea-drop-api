@@ -1,7 +1,7 @@
 import { jwtVerify } from 'jose'
 import dotenv from 'dotenv'
 dotenv.config()
-import User from '../models/User.js'
+import User from '../models/Users.js'
 import { JWT_SECRET } from '../utils/getJwtSecret.js'
 
 export const protect = async (req, res, next) => {
